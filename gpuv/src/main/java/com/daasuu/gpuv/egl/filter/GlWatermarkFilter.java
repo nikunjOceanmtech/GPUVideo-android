@@ -2,6 +2,7 @@ package com.daasuu.gpuv.egl.filter;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.util.Log;
 
 public class GlWatermarkFilter extends GlOverlayFilter {
 
@@ -18,8 +19,14 @@ public class GlWatermarkFilter extends GlOverlayFilter {
         this.position = position;
     }
 
+
+
     @Override
     protected void drawCanvas(Canvas canvas) {
+        Log.d(null, "Bitmap width: " + bitmap.getWidth());
+        Log.d(null, "Bitmap height: " + bitmap.getHeight());
+        Log.d(null, "Bitmap config: " + bitmap.getConfig().toString());
+
         if (bitmap != null && !bitmap.isRecycled()) {
             switch (position) {
                 case LEFT_TOP:

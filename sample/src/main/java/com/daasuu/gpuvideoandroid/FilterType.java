@@ -3,6 +3,7 @@ package com.daasuu.gpuvideoandroid;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.nfc.Tag;
 import android.util.Log;
 
 import com.daasuu.gpuv.egl.filter.GlBilateralFilter;
@@ -197,7 +198,7 @@ public enum FilterType {
             case VIGNETTE:
                 return new GlVignetteFilter();
             case WATERMARK:
-                return new GlWatermarkFilter(BitmapFactory.decodeResource(context.getResources(), R.drawable.sample_bitmap), GlWatermarkFilter.Position.RIGHT_BOTTOM);
+                return new GlWatermarkFilter(BitmapFactory.decodeResource(context.getResources(), R.drawable.effect2), GlWatermarkFilter.Position.LEFT_TOP);
             case WEAK_PIXEL:
                 return new GlWeakPixelInclusionFilter();
             case WHITE_BALANCE:
@@ -208,7 +209,7 @@ public enum FilterType {
             case ZOOM_BLUR:
                 return new GlZoomBlurFilter();
             case BITMAP_OVERLAY_SAMPLE:
-                return new GlBitmapOverlaySample(BitmapFactory.decodeResource(context.getResources(), R.drawable.sample_bitmap));
+                return new GlBitmapOverlaySample(BitmapFactory.decodeResource(context.getResources(), R.drawable.ic_launcher_background));
             default:
                 return new GlFilter();
         }
@@ -307,7 +308,7 @@ public enum FilterType {
                 return new FilterAdjuster() {
                     @Override
                     public void adjust(GlFilter filter, int percentage) {
-                        ((GlOpacityFilter) filter).setOpacity(range(percentage, 0.0f, 1.0f));
+                        ((GlOpacityFilter) filter).setOpacity(range(percentage, 0.0f, 0.3f));
                     }
                 };
             case PIXELATION:
